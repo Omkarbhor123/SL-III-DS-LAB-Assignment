@@ -1,0 +1,11 @@
+﻿Student ID,Age,Gender,Grade,Attendance,Extracurricular,Stress Level
+1,18,M,85,90,     Basketball,4
+2,19,F,92,95,Chess,2
+3,17,M,78,80,Dance,5
+4,20,F,88,92,Football,3
+5,19,M,95,85,Tennis,1
+6,18,F,81,88,Debate,4
+7,,M,72,75,Music,999
+8,21,F,,98,Art,2
+9,19,,90,92,Chess,3
+10,20,M,75,,Basketball,5
