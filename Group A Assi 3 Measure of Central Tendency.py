@@ -1,4 +1,22 @@
+import pandas as pd
 
+# Load the data into a pandas DataFrame
+data = pd.read_csv('/content/Salary_Data.csv')
+
+# Summary statistics for Age grouped by Education Level
+print('Summary statistics for Age grouped by Education Level:')
+print(data.groupby('Education Level')['Age'].describe())
+
+# Summary statistics for Salary grouped by Education Level
+print('\nSummary statistics for Salary grouped by Education Level:')
+print(data.groupby('Education Level')['Salary'].describe())
+
+# Create a list with numeric values for Education Level
+education_levels = data['Education Level'].unique()
+education_levels_list = [education_levels.tolist().index(level) + 1 for level in education_levels]
+
+print('\nList of numeric values for Education Level:')
+print(education_levels_list)
 
 
 # ---------------------------- Iris dataset ( Question 2 ) -------------------------------
