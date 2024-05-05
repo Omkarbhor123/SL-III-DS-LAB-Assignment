@@ -58,3 +58,15 @@ print("Error Rate:", error_rate)
 print("Precision:", precision)
 print("Recall:", recall)
 
+
+# Predicted
+#          0    1
+# Actual 0 TN   FP
+#        1 FN   TP
+
+# Here's how to interpret a confusion matrix:
+
+# True Positive (TP): The number of instances that were correctly predicted as positive (Purchased in this case).
+# False Positive (FP): The number of instances that were incorrectly predicted as positive. These are instances that were actually negative (not Purchased), but the model predicted them as positive.
+# True Negative (TN): The number of instances that were correctly predicted as negative (not Purchased).
+# False Negative (FN): The number of instances that were incorrectly predicted as negative. These are instances that were actually positive (Purchased), but the model predicted them as negative.
