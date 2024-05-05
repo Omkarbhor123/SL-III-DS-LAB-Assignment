@@ -1,3 +1,4 @@
+import pandas as pd
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer, WordNetLemmatizer
@@ -59,18 +60,19 @@ terms = vectorizer.get_feature_names_out()
 
 # Print the document-term matrix
 print("\nDocument-Term Matrix:")
-print(X.toarray())
+doc_term_df = pd.DataFrame(X.toarray(), columns=terms)
+print(doc_term_df)
 
 # Print the terms
 print("\nTerms:")
 print(terms)
 
 # Get the term frequencies
-term_frequencies = vectorizer.transform(documents).toarray()
+term_frequencies_df = pd.DataFrame(term_frequencies, columns=terms)
 print("\nTerm Frequencies:")
-print(term_frequencies)
+print(term_frequencies_df)
 
 # Get the inverse document frequencies
-idf = vectorizer.idf_
+idf_df = pd.DataFrame([idf], columns=terms)
 print("\nInverse Document Frequencies:")
-print(dict(zip(terms, idf)))
+print(idf_df)
