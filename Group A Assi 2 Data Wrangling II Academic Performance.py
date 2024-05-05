@@ -1,5 +1,7 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Load the dataset
 dataset = pd.read_csv('/content/Academic performance.csv')
@@ -21,12 +23,27 @@ dataset['Gender'] = dataset['Gender'].replace(['m', 'f'], ['M', 'F'])
 
 # 2. Scan numeric variables for outliers and deal with them
 print("\nOutliers in numeric variables:")
-for col in dataset.select_dtypes(include=['number']).columns:
-    print(f"\n{col}:")
-    print(dataset[col].describe())
 
-# Replace the outlier value in 'Stress Level' with the median
-dataset['Stress Level'] = dataset['Stress Level'].replace(999, dataset['Stress Level'].median())
+numeric_cols = dataset.select_dtypes(include=['number']).columns
+
+# Create a box plot for each numeric column
+for col in numeric_cols:
+    plt.figure(figsize=(8, 6))
+    sns.boxplot(data=dataset, x=col)
+    plt.title(f"Box Plot for {col}")
+    plt.show()
+
+# Identify and remove outliers based on box plot visualization
+for col in numeric_cols:
+    Q1 = dataset[col].quantile(0.25)
+    Q3 = dataset[col].quantile(0.75)
+    IQR = Q3 - Q1
+    lower_bound = Q1 - (1.5 * IQR)
+    upper_bound = Q3 + (1.5 * IQR)
+    dataset = dataset[(dataset[col] >= lower_bound) & (dataset[col] <= upper_bound)]
+
+# Print the remaining data after removing outliers
+print("\nData after removing outliers:\n", dataset)
 
 # 3. Apply data transformations on at least one variable
 # Apply log transformation to 'Grade' to decrease skewness
@@ -35,7 +52,3 @@ dataset['Grade_log'] = np.log(dataset['Grade'])
 # Check skewness before and after transformation
 print("\nSkewness of 'Grade' before transformation:", dataset['Grade'].skew())
 print("Skewness of 'Grade_log' after transformation:", dataset['Grade_log'].skew())
-
-# import matplotlib.pyplot as plt
-# plt.boxplot(dataset['Stress Level'])
-# plt.show()
