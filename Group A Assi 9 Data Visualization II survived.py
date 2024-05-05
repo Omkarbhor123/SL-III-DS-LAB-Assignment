@@ -22,7 +22,8 @@ plt.show()
 
 # Observations:
 
-# In both genders, the median age of those who survived appears to be slightly lower than those who did not survive.
-# The age distribution for males who survived is slightly narrower compared to males who did not survive.
-# Females who survived seem to have a wider range of ages compared to females who did not survive.
-# There are outliers present in the age distribution for both genders and survival categories, suggesting the presence of individuals whose ages significantly deviate from the majority within their respective groups.
+# For male passengers who did not survive, the median age is around 30 years, while for male survivors, the median age is slightly higher, around 35 years.
+# For female passengers who did not survive, the median age is around 28 years, while for female survivors, the median age is lower, around 26 years.
+# The age distribution for male non-survivors is more spread out compared to male survivors, as indicated by the larger box and longer whiskers.
+# The age distribution for female non-survivors is also more spread out compared to female survivors.
+# There are several outliers (circles) in the plot, indicating the presence of passengers with ages significantly different from the majority of the passengers in their respective groups.
